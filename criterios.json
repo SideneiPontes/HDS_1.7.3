@@ -1,0 +1,22 @@
+{
+  "versao": 2,
+  "vento_kmh": [
+    { "from": null, "to": 2.0,  "from_inclusive": false, "to_inclusive": false, "classe": "RED"    },  
+    { "from": 2.0,  "to": 3.1,  "from_inclusive": true,  "to_inclusive": true,  "classe": "YELLOW" },  
+    { "from": 3.1,  "to": 6.5,  "from_inclusive": false, "to_inclusive": true,  "classe": "GREEN"  },  
+    { "from": 6.5,  "to": 9.6,  "from_inclusive": false, "to_inclusive": true,  "classe": "YELLOW" },  
+    { "from": 9.6,  "to": null, "from_inclusive": false, "to_inclusive": false, "classe": "RED"    }   
+  ],
+  "umidade_pct": [
+    { "from": null, "to": 50.0, "from_inclusive": false, "to_inclusive": false, "classe": "RED"    },  
+    { "from": 50.0, "to": 55.0, "from_inclusive": true,  "to_inclusive": true,  "classe": "YELLOW" },  
+    { "from": 55.0, "to": null, "from_inclusive": false, "to_inclusive": false, "classe": "GREEN"  }   
+  ],
+  "temperatura_c": [
+    { "from": 15.0, "to": 30.0, "from_inclusive": true,  "to_inclusive": true,  "classe": "GREEN"  },
+    { "from": 14.0, "to": 15.0, "from_inclusive": true,  "to_inclusive": false, "classe": "YELLOW" },
+    { "from": 30.0, "to": 31.0, "from_inclusive": false, "to_inclusive": true,  "classe": "YELLOW" },
+    { "from": null, "to": null, "from_inclusive": false, "to_inclusive": false, "classe": "RED"    }
+  ],
+  "duracao_min_janela": 15
+}

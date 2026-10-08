@@ -1,0 +1,171 @@
+/* =================================== CSS do MODAL =================================== */
+:root {
+  --modal-bg: #ffffff;
+  --modal-text: #333;
+  --modal-muted: #555;
+  --modal-border: #ddd;
+  --brand-blue: #4e8cff;
+  --brand-blue-dark: #3b6fd1;
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --modal-bg: #1f1f1f;
+    --modal-text: #eaeaea;
+    --modal-muted: #c9c9c9;
+    --modal-border: #2a2a2a;
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* ===== Weather Modal ===== */
+#weatherModal {
+  position: relative;          /* já está no fluxo */
+  max-width: 600px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 24px 32px;
+
+  background: var(--modal-bg);
+  color: var(--modal-text);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--modal-border);
+
+  font-family: 'Ubuntu', Arial, sans-serif;
+  line-height: 1.45;
+
+  z-index: 10; /* não cobre o dashboard inteiro */
+}
+
+/* Título */
+#weatherModal h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+/* ===== Formulário de busca ===== */
+#weatherModal .form-input-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+#weatherModal input#city-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--modal-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  color: #222;
+}
+
+@media (prefers-color-scheme: dark) {
+  #weatherModal input#city-input {
+    background: #111;
+    color: #eee;
+  }
+}
+
+#weatherModal input#city-input:focus {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 2px rgba(78, 140, 255, 0.15);
+}
+
+#weatherModal button#search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: none;
+  background: var(--brand-blue);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform .05s ease;
+}
+
+#weatherModal button#search:hover { background: var(--brand-blue-dark); }
+#weatherModal button#search:active { transform: translateY(1px); }
+#weatherModal button#search:focus-visible { outline: 3px solid rgba(78,140,255,.35); border-radius: 6px; }
+
+/* Ícone */
+#weatherModal button#search i { margin-left: 6px; }
+
+/* ===== Bloco de resultados ===== */
+#weatherModal #weather-data {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* .hide só tem efeito DENTRO do modal */
+#weatherModal #weather-data.hide { display: none; }
+
+/* Cabeçalho cidade + bandeira */
+#weatherModal #weather-data h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+}
+
+/* Temperatura destaque */
+#weatherModal #temperature {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: .3rem 0 1rem;
+}
+
+/* Descrição e ícone */
+#weatherModal #description-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+#weatherModal #description {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}
+
+/* Umidade & Vento */
+#weatherModal #details-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 1rem;
+  color: var(--modal-muted);
+}
+
+#weatherModal #details-container i { margin-right: 4px; }
+
+/* ===== Responsivo ===== */
+@media (max-width: 450px) {
+  #weatherModal { padding: 20px 16px; }
+  #weatherModal .form-input-container { flex-direction: column; }
+  #weatherModal button#search { width: 100%; }
+  #weatherModal #details-container { flex-direction: column; gap: 12px; }
+}
+
+/* =================== Salvaguardas locais =================== */
+/* Evita esconder o semáforo se algum CSS externo usar .hide global */
+#appSemaphore { visibility: visible !important; }
+
+/* Mantém o semáforo acima do modal, caso necessário (sem criar overlay) */
+#appSemaphore, .semaphore-card {
+  z-index: 11; /* ligeiramente acima do modal (10) */
+  position: relative;
+}
+
+/* ===================== (Reservado) GRÁFICOS ========================== */
